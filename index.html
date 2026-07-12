@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eleonor Software — Dijital Deneyim Stüdyosu</title>
+<meta name="description" content="Eleonor Software: Web, mobil uygulama, e-ticaret ve özel yazılım. Fikirlerinizi dijital deneyimlere dönüştürüyoruz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2300e5ff'/><stop offset='1' stop-color='%23a855f7'/></linearGradient></defs><rect x='15' y='15' width='70' height='70' rx='18' fill='url(%23g)'/></svg>">
+</head>
+<body>
+
+<!-- Grain overlay -->
+<div class="grain"></div>
+
+<!-- Scroll progress -->
+<div class="scroll-progress"><div class="scroll-progress-fill" id="scrollProgress"></div></div>
+
+<!-- Custom cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ============ PRELOADER ============ -->
+<div class="preloader" id="preloader">
+  <div class="preloader-content">
+    <div class="preloader-word" aria-hidden="true"></div>
+    <div class="preloader-counter"><span id="preCounter">0</span>%</div>
+  </div>
+  <div class="preloader-curtain"></div>
+  <div class="preloader-curtain c2"></div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a href="#hero" class="nav-brand magnetic" data-cursor="hover">
+    <svg class="brand-mark" viewBox="0 0 40 40" width="34" height="34">
+      <defs>
+        <linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#00e5ff"/><stop offset="1" stop-color="#a855f7"/>
+        </linearGradient>
+      </defs>
+      <rect class="brand-rect" x="5" y="5" width="30" height="30" rx="9" fill="none" stroke="url(#brandGrad)" stroke-width="2.5"/>
+      <path class="brand-e" d="M15 14h11M15 20h8M15 26h11" stroke="url(#brandGrad)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    </svg>
+    <span class="brand-text"></span>
+  </a>
+  <nav class="nav-menu" id="navMenu"></nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Menü" data-cursor="hover"><span></span><span></span></button>
+</header>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <canvas id="waveCanvas"></canvas>
+  <div class="hero-aurora"></div>
+  <div class="hero-inner" id="heroInner"></div>
+  <div class="hero-footer" id="heroFooter"></div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="mq"><div class="mq-track" id="mqTrack"></div></div>
+
+<!-- ============ HİZMETLER ============ -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head" id="servicesHead"></div>
+    <div class="svc-grid" id="svcGrid"></div>
+  </div>
+</section>
+
+<!-- ============ PROJELER ============ -->
+<section class="showcase" id="work">
+  <div class="showcase-pin">
+    <div class="showcase-head wrap" id="workHead"></div>
+    <div class="showcase-track" id="showcaseTrack"></div>
+  </div>
+</section>
+
+<!-- ============ SÜREÇ ============ -->
+<section class="sec sec-process" id="process">
+  <div class="wrap">
+    <div class="sec-head" id="processHead"></div>
+    <div class="steps" id="stepsWrap"></div>
+  </div>
+</section>
+
+<!-- ============ İLETİŞİM ============ -->
+<section class="contact" id="contact">
+  <div class="contact-aurora"></div>
+  <div class="wrap contact-inner" id="contactInner"></div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="foot-big" aria-hidden="true"><div class="foot-big-track" id="footBig"></div></div>
+  <div class="wrap foot-row" id="footRow"></div>
+</footer>
+
+<script src="content.js"></script>
+<script src="render.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

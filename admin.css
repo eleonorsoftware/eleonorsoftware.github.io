@@ -1,0 +1,330 @@
+/* ═══════════ ELEONOR ADMIN ═══════════ */
+:root {
+  --bg: #07070c;
+  --panel: #0d0d16;
+  --panel-2: #12121e;
+  --ink: #eef0f8;
+  --dim: #8b8fa8;
+  --line: rgba(255, 255, 255, 0.09);
+  --cyan: #00e5ff;
+  --violet: #7c5cff;
+  --grad: linear-gradient(100deg, #00e5ff, #7c5cff 55%, #e14eff);
+  --ok: #2ee6a8;
+  --err: #ff5f6e;
+  --font-d: 'Syne', sans-serif;
+  --font-b: 'Space Grotesk', sans-serif;
+  --r: 12px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-b);
+  font-size: 14.5px;
+  line-height: 1.55;
+  height: 100vh;
+  overflow: hidden;
+}
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #262738; border-radius: 9px; }
+
+.adm { display: grid; grid-template-columns: 240px minmax(430px, 1fr) minmax(420px, 1.1fr); height: 100vh; }
+
+/* ── Sol menü ── */
+.adm-side {
+  background: var(--panel);
+  border-right: 1px solid var(--line);
+  display: flex; flex-direction: column;
+  padding: 22px 16px;
+  gap: 20px;
+}
+.adm-logo {
+  font-family: var(--font-d);
+  font-weight: 800; font-size: 1.05rem; letter-spacing: 1.5px;
+  padding: 4px 10px 14px;
+  border-bottom: 1px solid var(--line);
+}
+.adm-logo em {
+  font-style: normal; font-weight: 600;
+  background: var(--grad);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.adm-nav { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.adm-nav-item {
+  text-align: left;
+  background: none; border: none;
+  color: var(--dim);
+  font-family: var(--font-b); font-size: .95rem; font-weight: 500;
+  padding: 11px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all .25s;
+}
+.adm-nav-item:hover { color: var(--ink); background: rgba(255, 255, 255, .04); }
+.adm-nav-item.active {
+  color: #fff;
+  background: linear-gradient(100deg, rgba(0, 229, 255, .16), rgba(124, 92, 255, .16));
+  box-shadow: inset 0 0 0 1px rgba(124, 92, 255, .35);
+}
+.adm-side-foot { display: flex; flex-direction: column; gap: 9px; }
+
+/* ── Butonlar ── */
+.adm-btn {
+  border: none; cursor: pointer;
+  font-family: var(--font-b); font-weight: 600; font-size: .92rem;
+  padding: 12px 16px;
+  border-radius: 10px;
+  transition: transform .2s, box-shadow .25s, background .25s, border-color .25s;
+}
+.adm-btn:hover { transform: translateY(-1px); }
+.adm-btn.primary {
+  background: var(--grad);
+  background-size: 180% 180%;
+  color: #fff;
+  box-shadow: 0 6px 22px rgba(124, 92, 255, .35);
+}
+.adm-btn.primary:hover { box-shadow: 0 10px 30px rgba(124, 92, 255, .5); }
+.adm-btn.ghost {
+  background: rgba(255, 255, 255, .04);
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+.adm-btn.ghost:hover { border-color: var(--violet); }
+.adm-btn.small { padding: 8px 13px; font-size: .82rem; }
+.adm-btn.danger { background: rgba(255, 95, 110, .12); border: 1px solid rgba(255, 95, 110, .4); color: var(--err); }
+.adm-btn:disabled { opacity: .5; cursor: wait; transform: none; }
+
+/* ── Orta panel ── */
+.adm-main { display: flex; flex-direction: column; overflow: hidden; }
+.adm-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+.adm-head h1 { font-family: var(--font-d); font-size: 1.25rem; font-weight: 700; }
+.adm-panels { flex: 1; overflow-y: auto; padding: 26px 28px 60px; }
+.adm-panel { display: none; }
+.adm-panel.active { display: block; animation: panelIn .3s ease; }
+@keyframes panelIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* ── Form elemanları ── */
+.f-group { margin-bottom: 20px; }
+.f-label {
+  display: block;
+  font-size: .78rem; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 7px;
+}
+.f-input, .f-area {
+  width: 100%;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--ink);
+  font-family: var(--font-b); font-size: .95rem;
+  padding: 11px 14px;
+  transition: border-color .25s, box-shadow .25s;
+}
+.f-input:focus, .f-area:focus {
+  outline: none;
+  border-color: var(--violet);
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, .18);
+}
+.f-area { resize: vertical; min-height: 76px; }
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.f-row-3 { display: grid; grid-template-columns: 2fr 1fr 2fr; gap: 14px; }
+
+.f-section {
+  margin: 30px 0 16px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--line);
+  font-family: var(--font-d);
+  font-size: 1rem; font-weight: 700;
+  color: var(--ink);
+}
+.f-hint { font-size: .8rem; color: var(--dim); margin-top: 5px; }
+
+/* ── Liste editörü (hizmet/proje/adım kartları) ── */
+.li-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 18px;
+  margin-bottom: 14px;
+  transition: border-color .25s;
+}
+.li-card:hover { border-color: rgba(124, 92, 255, .4); }
+.li-head {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 14px;
+}
+.li-title { font-weight: 700; font-size: .95rem; flex: 1; color: var(--cyan); }
+.li-tools { display: flex; gap: 5px; }
+.li-tool {
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  width: 30px; height: 30px;
+  cursor: pointer;
+  font-size: .85rem;
+  transition: all .2s;
+}
+.li-tool:hover { border-color: var(--violet); background: rgba(124, 92, 255, .15); }
+.li-tool.del:hover { border-color: var(--err); background: rgba(255, 95, 110, .15); }
+.li-tool:disabled { opacity: .3; cursor: default; }
+.btn-add {
+  width: 100%;
+  padding: 13px;
+  background: none;
+  border: 1.5px dashed rgba(124, 92, 255, .45);
+  border-radius: var(--r);
+  color: var(--violet);
+  font-family: var(--font-b); font-weight: 600; font-size: .92rem;
+  cursor: pointer;
+  transition: all .25s;
+}
+.btn-add:hover { background: rgba(124, 92, 255, .1); border-style: solid; }
+
+/* ── İkon / tema / görsel seçiciler ── */
+.pick-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.pick {
+  background: var(--panel-2);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 8px;
+  display: grid; place-items: center;
+  transition: all .2s;
+  color: var(--cyan);
+}
+.pick:hover { border-color: rgba(0, 229, 255, .5); }
+.pick.sel { border-color: var(--cyan); background: rgba(0, 229, 255, .1); box-shadow: 0 0 0 3px rgba(0, 229, 255, .12); }
+.pick svg { width: 34px; height: 34px; }
+.pick-theme { width: 46px; height: 34px; border-radius: 8px; }
+.pick-art { width: 92px; height: 64px; padding: 4px; }
+.pick-art svg { width: 100%; height: 100%; }
+
+/* ── Sağ önizleme ── */
+.adm-preview {
+  border-left: 1px solid var(--line);
+  background: var(--panel);
+  display: flex; flex-direction: column;
+}
+.adm-preview-bar {
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.adm-preview-title { font-weight: 700; font-size: .9rem; flex: 1; }
+.adm-preview-devices { display: flex; gap: 5px; }
+.dev-btn {
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: .9rem;
+  transition: all .2s;
+}
+.dev-btn.active { border-color: var(--cyan); background: rgba(0, 229, 255, .1); }
+.adm-preview-frame-wrap {
+  flex: 1;
+  display: flex; justify-content: center;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(124, 92, 255, .07), transparent 50%),
+    #05050a;
+  overflow: hidden;
+  padding: 0;
+}
+.adm-preview-frame-wrap.mobile { padding: 18px 0; }
+#previewFrame {
+  width: 100%; height: 100%;
+  border: none;
+  background: #050508;
+  transition: width .35s ease;
+}
+.adm-preview-frame-wrap.mobile #previewFrame {
+  width: 390px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+}
+
+/* ── Dialog ── */
+.adm-dialog {
+  margin: auto; /* * reset'i UA'nın dialog ortalamasını eziyor; geri ver */
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 28px;
+  width: min(480px, 92vw);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, .7);
+}
+.adm-dialog::backdrop { background: rgba(0, 0, 0, .65); backdrop-filter: blur(4px); }
+.adm-dialog h2 { font-family: var(--font-d); font-size: 1.15rem; margin-bottom: 10px; }
+.adm-dialog-info { color: var(--dim); font-size: .88rem; margin-bottom: 18px; }
+.adm-dialog label {
+  display: block;
+  font-size: .82rem; font-weight: 600;
+  color: var(--dim);
+  margin-bottom: 14px;
+}
+.adm-dialog input {
+  width: 100%;
+  margin-top: 5px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  color: var(--ink);
+  font-family: var(--font-b); font-size: .92rem;
+  padding: 10px 13px;
+}
+.adm-dialog input:focus { outline: none; border-color: var(--violet); }
+.adm-dialog-hint {
+  font-size: .78rem; color: var(--dim);
+  background: rgba(0, 229, 255, .06);
+  border: 1px solid rgba(0, 229, 255, .18);
+  border-radius: 9px;
+  padding: 10px 13px;
+  margin-bottom: 18px;
+}
+.adm-dialog-actions { display: flex; justify-content: flex-end; gap: 10px; }
+
+/* ── Toast ── */
+.adm-toast {
+  position: fixed;
+  bottom: 24px; left: 50%;
+  transform: translate(-50%, 80px);
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 13px 22px;
+  font-weight: 600; font-size: .92rem;
+  z-index: 100;
+  opacity: 0;
+  transition: all .4s cubic-bezier(.34, 1.56, .64, 1);
+  max-width: min(560px, 90vw);
+  text-align: center;
+}
+.adm-toast.show { opacity: 1; transform: translate(-50%, 0); }
+.adm-toast.ok { border-color: rgba(46, 230, 168, .5); color: var(--ok); }
+.adm-toast.err { border-color: rgba(255, 95, 110, .5); color: var(--err); }
+
+/* ── Dar ekran ── */
+@media (max-width: 1200px) {
+  .adm { grid-template-columns: 220px 1fr; }
+  .adm-preview { display: none; }
+}
+@media (max-width: 760px) {
+  body { overflow: auto; }
+  .adm { display: block; height: auto; }
+  .adm-side { flex-direction: column; border-right: none; border-bottom: 1px solid var(--line); }
+  .adm-main { height: auto; }
+  .adm-panels { overflow: visible; }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eleonor Software — Yönetim Paneli</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+</head>
+<body>
+
+<div class="adm">
+  <!-- ── Sol menü ── -->
+  <aside class="adm-side">
+    <div class="adm-logo">ELEONOR<em>ADMIN</em></div>
+    <nav class="adm-nav" id="admNav">
+      <button class="adm-nav-item active" data-panel="hero">✨ Ana Sayfa (Hero)</button>
+      <button class="adm-nav-item" data-panel="services">🧩 Hizmetler</button>
+      <button class="adm-nav-item" data-panel="work">🖼️ Projeler</button>
+      <button class="adm-nav-item" data-panel="process">🪜 Süreç</button>
+      <button class="adm-nav-item" data-panel="contact">📞 İletişim</button>
+      <button class="adm-nav-item" data-panel="general">⚙️ Genel & SEO</button>
+    </nav>
+    <div class="adm-side-foot">
+      <button class="adm-btn ghost" id="btnGhConfig">🔑 GitHub Ayarları</button>
+      <button class="adm-btn ghost" id="btnSaveLocal">💾 Bilgisayara Kaydet</button>
+      <button class="adm-btn primary" id="btnPublish">🚀 GitHub'a Yayınla</button>
+    </div>
+  </aside>
+
+  <!-- ── Orta: form alanı ── -->
+  <main class="adm-main">
+    <header class="adm-head">
+      <h1 id="panelTitle">Ana Sayfa (Hero)</h1>
+      <div class="adm-head-actions">
+        <button class="adm-btn ghost small" id="btnReset">↩️ Değişiklikleri Geri Al</button>
+      </div>
+    </header>
+    <div class="adm-panels" id="admPanels"><!-- admin.js doldurur --></div>
+  </main>
+
+  <!-- ── Sağ: canlı önizleme ── -->
+  <aside class="adm-preview">
+    <div class="adm-preview-bar">
+      <span class="adm-preview-title">Canlı Önizleme</span>
+      <div class="adm-preview-devices">
+        <button class="dev-btn active" data-w="" title="Masaüstü">🖥️</button>
+        <button class="dev-btn" data-w="390" title="Telefon">📱</button>
+      </div>
+      <button class="adm-btn ghost small" id="btnRefresh">🔄</button>
+    </div>
+    <div class="adm-preview-frame-wrap" id="previewWrap">
+      <iframe id="previewFrame" src="index.html?preview=1" title="Site önizleme"></iframe>
+    </div>
+  </aside>
+</div>
+
+<!-- ── GitHub ayar penceresi ── -->
+<dialog class="adm-dialog" id="ghDialog">
+  <h2>🔑 GitHub Yayın Ayarları</h2>
+  <p class="adm-dialog-info">
+    Değişiklikleri tek tıkla siteye yayınlamak için bir kereliğine doldurun.
+    Bilgiler yalnızca <b>bu tarayıcıda</b> saklanır, hiçbir sunucuya gönderilmez.
+  </p>
+  <label>GitHub kullanıcı adı
+    <input type="text" id="ghOwner" placeholder="örn: eleonorsoftware">
+  </label>
+  <label>Depo (repo) adı
+    <input type="text" id="ghRepo" placeholder="örn: eleonorsoftware.github.io">
+  </label>
+  <label>Branch
+    <input type="text" id="ghBranch" placeholder="main" value="main">
+  </label>
+  <label>Personal Access Token
+    <input type="password" id="ghToken" placeholder="github_pat_...">
+  </label>
+  <p class="adm-dialog-hint">
+    Token oluşturma: GitHub → Settings → Developer settings → Personal access tokens →
+    Fine-grained tokens → <b>Generate new token</b>. Sadece bu depoyu seçin,
+    izinlerden <b>Contents: Read and write</b> verin.
+  </p>
+  <div class="adm-dialog-actions">
+    <button class="adm-btn ghost" id="ghCancel">Vazgeç</button>
+    <button class="adm-btn primary" id="ghSave">Kaydet</button>
+  </div>
+</dialog>
+
+<div class="adm-toast" id="toast"></div>
+
+<script src="content.js"></script>
+<script src="render.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
